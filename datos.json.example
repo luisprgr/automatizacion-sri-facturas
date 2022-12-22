@@ -1,0 +1,35 @@
+{   
+    "ruc": "",
+    "password": "",
+    "factura": {
+        "establecimiento": "",
+        "guia_remision": "",
+        "adquiriente": {
+            "identificacion": "",
+            "tipo_identificacion": "",
+            "razon_social": "",
+            "direccion": "",
+            "telefono": "",
+            "correo_electronico": ""
+        },
+        "productos": [
+            {
+                "codigo_producto": ""
+            }
+        ],
+        "formas_pago": [
+            {
+                "forma_pago": "",
+                "valor": "",
+                "plazo": "",
+                "tiempo": ""
+            }
+        ],
+        "campos_adicionales": [
+            {
+                "nombre": "",
+                "descripcion": ""
+            }
+        ]
+    }
+}
