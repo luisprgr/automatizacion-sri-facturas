@@ -127,3 +127,11 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# VSCode related things
+.vscode/
+
+# App related things
+capturas/
+geckodriver.log
+datos.json
