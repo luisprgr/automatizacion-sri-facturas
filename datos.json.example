@@ -1,6 +1,7 @@
 {   
     "ruc": "",
     "password": "",
+    "firma": "",
     "factura": {
         "establecimiento": "",
         "guia_remision": "",
