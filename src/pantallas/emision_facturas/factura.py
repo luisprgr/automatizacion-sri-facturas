@@ -146,7 +146,10 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
         write_in_element(ids.CLAVE_CERTIFICADO_INPUT_ID, value=firma)
         if test:
             click_element(ids.CANCELAR_ENVIO_FACTURA_FIRMADA_BUTTON_ID)
+            print("Factura creada pero no enviada ni guardada como borrador")
+            time.sleep(180)
         else:
             click_element(ids.ENVIAR_FACTURA_FIRMADA_BUTTON_ID)
+            print("Factura creada y enviada")
     
     time.sleep(2)
