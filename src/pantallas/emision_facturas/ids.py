@@ -22,3 +22,7 @@ CAMPO_ADICIONAL_NOMBRE_INPUT_ID = "form:campoAdicionalComposite:idNombreCampoAdc
 CAMPO_ADICIONAL_DESCRIPCION_INPUT_ID = "form:campoAdicionalComposite:idDescCampoAdicional"
 CAMPO_ADICIONAL_GUARDAR_BUTTON_ID = "form:campoAdicionalComposite:cmbGuardarCampoAdcional"
 GUARDAR_SIN_FIRMAR_BUTTON_ID = "form:guardarSinFirmarButton"
+GUARDAR_Y_FIRMAR_BUTTON_ID = "form:firmarButtonSinToken"
+CLAVE_CERTIFICADO_INPUT_ID = "form:appletComposite:txtClaveCertificado"
+ENVIAR_FACTURA_FIRMADA_BUTTON_ID = "form:appletComposite:btnEnviarSinTokenn"
+CANCELAR_ENVIO_FACTURA_FIRMADA_BUTTON_ID = "form:appletComposite:btnCerrarFirmarSinToken"
