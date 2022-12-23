@@ -12,6 +12,8 @@ if __name__ == '__main__':
     app_data: dict = None
     guardar_capturas: bool = True
     headless: bool = False
+    borrador: bool = True
+    test: bool = True
 
     if guardar_capturas:
         crear_directorio_capturas()
@@ -28,7 +30,7 @@ if __name__ == '__main__':
         firefox.set_window_size(1920, 1080)
 
         login(firefox, guardar_capturas, app_data.get('ruc'), app_data.get('password'))
-        emision_factura(firefox, guardar_capturas, app_data.get('factura'))
+        emision_factura(firefox, guardar_capturas, app_data.get('firma'), app_data.get('factura'), borrador, test)
 
         firefox.close()
     else:
