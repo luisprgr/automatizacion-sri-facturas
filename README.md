@@ -6,7 +6,11 @@ Automatización de la creación de facturas en "SRI &amp; Yo en Línea" de Ecuad
 - Los productos que se deseen facturar ya deben estar ingresados.
 - Actualmente solo se puede agregar una unidad por producto.
 - Funciones como propina, cambio del porcentaje de IVA y facturas negociables no están implementadas.
-- Debido a que es una primera versión, el script está limitado a guardar la factura sin firmar, la cual luego debe ser firmada manualmente por el usuario en el sitio web de SRI &amp; Yo en Línea.
+- No tiene una interfaz de línea de comandos (_WIP_).
+
+### Comportamiento actual:
+- Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla, firmarla y enviarla. Si se desea que el script envíe la factura automáticamente, se debe cambiar las variables `borrador` y `test` a `False` en el archivo `main.py`.
+- Otra comportamiento que puede tener la aplicación es mostrar todo el flujo de creación de la factura hasta el ingreso de la firma, para que el usuario pueda supervisar este proceso, pero cancelando el envío de la factura al final. Para esto se debe cambiar la variable `test` a `True` y `borrador` a `False` en el archivo `main.py`. 
 
 ### Requerimientos:
 
