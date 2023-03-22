@@ -1,3 +1,4 @@
+import os
 import json
 from selenium.webdriver import Firefox
 from selenium.webdriver.firefox.options import Options
@@ -10,10 +11,12 @@ from src.utilidades.utilidades import crear_directorio_capturas
 if __name__ == '__main__':
 
     app_data: dict = None
-    guardar_capturas: bool = True
-    headless: bool = False
-    borrador: bool = True
-    test: bool = True
+    guardar_capturas: bool = os.getenv('ASRI_GUARDAR_CAPTURAS') != 'False'
+    headless: bool = os.getenv('ASRI_HEADLESS') == 'True'
+    borrador: bool = os.getenv('ASRI_BORRADOR') != 'False'
+    test: bool = os.getenv('ASRI_TEST') == 'True'
+
+    print(f'Los valores de las variables de entorno son:\nGuardar_capturas={guardar_capturas}\nHeadless={headless}\nBorrador={borrador}\nTest={test}')
 
     if guardar_capturas:
         crear_directorio_capturas()
