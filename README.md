@@ -7,10 +7,18 @@ Automatización de la creación de facturas en "SRI &amp; Yo en Línea" de Ecuad
 - Actualmente solo se puede agregar una unidad por producto.
 - Funciones como propina, cambio del porcentaje de IVA y facturas negociables no están implementadas.
 - No tiene una interfaz de línea de comandos (_WIP_).
+- Hay ocasiones en las que el script falla al autenticarse en el SRI, una teoría de por qué sucede esto es que el SRI no responde a tiempo y el script queda bloqueado esperando una respuesta. Para solucionar esto se debe ejecutar el script nuevamente. (la solución es un _WIP_)
 
 ### Comportamiento actual:
-- Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla, firmarla y enviarla. Si se desea que el script envíe la factura automáticamente, se debe cambiar las variables `borrador` y `test` a `False` en el archivo `main.py`.
-- Otra comportamiento que puede tener la aplicación es mostrar todo el flujo de creación de la factura hasta el ingreso de la firma, para que el usuario pueda supervisar este proceso, pero cancelando el envío de la factura al final. Para esto se debe cambiar la variable `test` a `True` y `borrador` a `False` en el archivo `main.py`. 
+Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla y luego manualmente firmarla y enviarla. 
+
+Si se desea que el script firme y envíe la factura automáticamente, se debe crear la variable de entorno `ASRI_BORRADOR` con el valor `False`.
+
+Otra comportamiento que puede tener la aplicación es mostrar todo el flujo de creación de la factura hasta el ingreso de la firma, pero cancelando el envío de la factura al final. Con el objetivo de que el usuario pueda supervisar todo el flujo de la aplicación. 
+
+Para esto se debe crear la variable de entorno `ASRI_TEST` con el valor `True` y `ASRI_BORRADOR` con el valor `False` para que la factura no se guarde como borrador.
+
+Bajo este modo, la aplicación no se cerrará al finalizar el proceso, en vez de eso se quedará abierta durante 3 minutos para que el usuario pueda revisar el resultado.
 
 ### Requerimientos:
 
