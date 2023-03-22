@@ -1,3 +1,4 @@
+import time
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as expected
 from selenium.webdriver.common.by import By
@@ -24,3 +25,5 @@ def login(driver, guardar_capturas: bool, ruc: str, password: str):
         guardar_captura(driver, "login")
 
     login_button.click()
+
+    time.sleep(3)
