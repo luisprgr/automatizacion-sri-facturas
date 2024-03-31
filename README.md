@@ -12,6 +12,8 @@ Automatización de la creación de facturas en "SRI &amp; Yo en Línea" de Ecuad
 ### Comportamiento actual:
 Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla y luego manualmente firmarla y enviarla. 
 
+También por defecto el script corre en modo headless (sin mostrar el navegador), si se desea ver visualmente los pasos del script se debe crear una variable `ASRI_HEADLESS` con el valor False
+
 Si se desea que el script firme y envíe la factura automáticamente, se debe crear la variable de entorno `ASRI_BORRADOR` con el valor `False`.
 
 Otra comportamiento que puede tener la aplicación es mostrar todo el flujo de creación de la factura hasta el ingreso de la firma, pero cancelando el envío de la factura al final. Con el objetivo de que el usuario pueda supervisar todo el flujo de la aplicación. 
