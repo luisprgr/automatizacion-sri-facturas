@@ -14,7 +14,7 @@ dropdown_xpath = lambda value: f"//li[contains(text(),'{value}')]"
 pagos_dropdown_xpath = lambda value: f"//td[contains(text(),'{value}')]"
 
 wait_time_dropdown = lambda: time.sleep(0.5)
-wait_time_popup = lambda: time.sleep(0.5)
+wait_time_popup = lambda: time.sleep(1)
 wait_time_search = lambda: time.sleep(1)
 
 
@@ -36,6 +36,12 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
         element = driver.find_element(by=by, value=element_id)
         element.send_keys(value)
         element.send_keys(Keys.TAB)
+
+    def delete_text_in_element(element_id, by=By.ID, text_size=10):
+        wait.until(expected.presence_of_element_located((by, element_id)))
+        element = driver.find_element(by=by, value=element_id)
+        for _ in range(text_size):
+            element.send_keys(Keys.BACKSPACE)
 
     def scroll_to_element(element_id, by=By.ID):
         wait.until(expected.presence_of_element_located((by, element_id)))
@@ -109,7 +115,7 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
         write_in_element(ids.FORMA_PAGO_VALOR_INPUT_ID, value=forma_pago.get('valor'))
 
         click_element(ids.FORMA_PAGO_PLAZO_INPUT_ID)
-        click_element(ids.FORMA_PAGO_PLAZO_INPUT_ID)
+        delete_text_in_element(ids.FORMA_PAGO_PLAZO_INPUT_ID)
         write_in_element(ids.FORMA_PAGO_PLAZO_INPUT_ID, value=forma_pago.get('plazo'))
 
         click_element(ids.FORMA_PAGO_TIEMPO_DROPDOWN_ID)
