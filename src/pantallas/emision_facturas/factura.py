@@ -78,7 +78,7 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
     # Producto
     
     for producto in factura.get('productos'):
-        click_element(ids.ADD_PRODUCTO_BUTTON_ID)
+        click_element(ids.ADD_PRODUCTO_BUTTON_XPATH, By.XPATH)
         wait_time_popup()
     
         click_element(ids.CODIGO_PRODUCTO_INPUT_ID)
