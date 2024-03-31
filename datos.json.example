@@ -4,6 +4,7 @@
     "firma": "",
     "factura": {
         "establecimiento": "",
+        "punto_emision": "",
         "guia_remision": "",
         "adquiriente": {
             "identificacion": "",

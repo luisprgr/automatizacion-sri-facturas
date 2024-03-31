@@ -1,4 +1,5 @@
 ESTABLECIMIENTO_DROPDOWN_ID = "form:cabeceraComprobanteDlg:j_idt61_label"
+PUNTO_EMISION_DROPDOWN_ID = "form:identifiacionDelComprobante:selectsecuencial_label"
 GUIA_REMISION_INPUT_ID = "form:identifiacionDelComprobante:j_idt74"
 IDENTIFICACION_INPUT_ID = "form:busquedaCompradorComp:ruc"
 TIPO_IDENTIFICACION_DROPDOWN_ID = "form:busquedaCompradorComp:cmbTipoIdentificacion_label"
