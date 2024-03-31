@@ -1,3 +1,3 @@
 INPUT_RUC_ID = "loginForm:nombreusuario"
 INPUT_PASSWORD_ID = "loginForm:passwordInput"
-BUTTON_LOGIN_ID = "loginForm:j_idt19"
+BUTTON_LOGIN_XPATH = "//*[starts-with(@id, 'loginForm:j_idt') and @role='button']"

@@ -7,7 +7,6 @@ Automatización de la creación de facturas en "SRI &amp; Yo en Línea" de Ecuad
 - Actualmente solo se puede agregar una unidad por producto.
 - Funciones como propina, cambio del porcentaje de IVA y facturas negociables no están implementadas.
 - No tiene una interfaz de línea de comandos (_WIP_).
-- Hay ocasiones en las que el script falla al autenticarse en el SRI, una teoría de por qué sucede esto es que el SRI no responde a tiempo y el script queda bloqueado esperando una respuesta. Para solucionar esto se debe ejecutar el script nuevamente. (la solución es un _WIP_)
 
 ### Comportamiento actual:
 Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla y luego manualmente firmarla y enviarla. 
