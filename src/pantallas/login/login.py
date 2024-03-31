@@ -26,4 +26,4 @@ def login(driver, guardar_capturas: bool, ruc: str, password: str):
 
     login_button.click()
 
-    time.sleep(3)
+    time.sleep(2)

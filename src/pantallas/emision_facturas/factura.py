@@ -49,7 +49,7 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
         driver.execute_script("arguments[0].scrollIntoView();", element)
 
 
-    click_element(ids.ESTABLECIMIENTO_DROPDOWN_ID)
+    click_element(ids.ESTABLECIMIENTO_DROPDOWN_XPATH, By.XPATH)
     wait_time_dropdown()
     click_element(dropdown_xpath(factura.get('establecimiento')), By.XPATH)
 
@@ -58,8 +58,8 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
     click_element(dropdown_xpath(factura.get('punto_emision')), By.XPATH)
     
     if factura.get("guia_remision") != "":
-        click_element(ids.GUIA_REMISION_INPUT_ID)
-        write_in_element(ids.GUIA_REMISION_INPUT_ID, value=factura.get("guia_remision"))
+        click_element(ids.GUIA_REMISION_INPUT_XPATH, By.XPATH)
+        write_in_element(ids.GUIA_REMISION_INPUT_XPATH, By.XPATH, value=factura.get("guia_remision"))
 
     # Adquiriente
 
