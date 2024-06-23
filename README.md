@@ -23,8 +23,8 @@ Bajo este modo, la aplicación no se cerrará al finalizar el proceso, en vez de
 
 ### Requerimientos:
 
-- Python 3.11 o superior
-- Poetry 1.2.2 o superior
+- Python 3.12 o superior
+- Poetry 1.8.3 o superior
 - Firefox
 
 ### Instalación:
