@@ -1,5 +1,5 @@
 # Automatización-sri-facturas
-Automatización de la creación de facturas en "SRI &amp; Yo en Línea" de Ecuador usando python y selenium
+Automatización de la creación de facturas en "SRI & Yo en Línea" de Ecuador usando python y selenium
 
 
 ### Limitaciones actuales:
@@ -23,29 +23,59 @@ Bajo este modo, la aplicación no se cerrará al finalizar el proceso, en vez de
 
 ### Requerimientos:
 
-- Python 3.12 o superior
-- Poetry 1.8.3 o superior
+- Python 3.13 o superior
 - Firefox
 
-### Instalación:
+### Requerimientos opcionales:
+
+- [uv](https://docs.astral.sh/uv/) 
+
+### Preparación del entorno:
 
 1. Clonar el repositorio
 
-```bash
-git clone https://github.com/luisprgr/automatizacion-sri-facturas.git
-```
+    ```bash
+    git clone https://github.com/luisprgr/automatizacion-sri-facturas.git
+    ```
 
 2. Instalar dependencias
 
-```bash
-poetry install
-```
+    ##### Si `uv` está instalado:
 
-3. Crear archivo con los datos para la facturación
+    ```bash
+    uv sync
+    ```
 
-```bash
-cp datos.json.example datos.json
-```
+    ##### O mediante `venv` + `pip`:
+
+    Creamos un entorno virtual
+    
+    ```bash
+    python -m venv .venv
+    ```
+
+    Activamos el entorno virtual (en Windows):
+
+    ```Powershell
+    .venv\Scripts\activate
+    ```
+
+    Activamos el entorno virtual (en macOS/Linux):
+
+    ```bash
+    source .venv/bin/activate
+    ```
+
+    Finalmente, instalamos las dependencias con:
+    ```bash
+    pip install .
+    ````
+
+3. Creamos un archivo con los datos para la facturación (en datos.json.example hay un ejemplo de como se debe crear la factura)
+
+    ```bash
+    cp datos.json.example datos.json
+    ```
 
 4. Editar el archivo `datos.json` con los datos de la factura que se realizará
 
@@ -53,8 +83,14 @@ cp datos.json.example datos.json
 
 Para ejecutar el script se debe ejecutar el siguiente comando: 
 
+Con uv:
 ```bash
-poetry run python main.py
+uv run main.py
+```
+
+O ejecutando dentro del entorno virtual creado anteriormente:
+```bash
+python3 main.py
 ```
 
 ### Licencia
