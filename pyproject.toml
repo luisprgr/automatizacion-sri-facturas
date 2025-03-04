@@ -1,19 +1,16 @@
-[tool.poetry]
+[project]
 name = "automatizacion-sri-facturas"
-version = "0.1.0"
+version = "0.2.0"
 description = "Automatización de la creación de facturas en 'SRI & Yo en Línea' de Ecuador usando python y selenium"
-authors = ["luisprgr"]
+authors = [{ name = "luisprgr" }]
 license = "MIT"
 readme = "README.md"
-package-mode = false
+requires-python = ">=3.13"
+dependencies = [
+    "selenium>=4.29.0",
+]
 
-[tool.poetry.dependencies]
-python = "^3.12"
-selenium = "^4.22.0"
-
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.4.10"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "ruff>=0.9.9",
+]
