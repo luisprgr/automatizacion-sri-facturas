@@ -134,4 +134,4 @@ dmypy.json
 # App related things
 capturas/
 geckodriver.log
-datos.json
+*.json
