@@ -72,7 +72,7 @@ Automatización de la creación de facturas en "SRI & Yo en Línea" de Ecuador u
 
 4. Editar el archivo `datos.json` con los datos de la factura que se realizará
 
-### Ejecución
+### Ejecución:
 
 Para probar si se puede ejecutar el script se puede user el siguiente comando (esto mostrará un mensaje con la documentación de la cli del script): 
 
