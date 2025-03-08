@@ -18,7 +18,7 @@ wait_time_popup = lambda: time.sleep(1)
 wait_time_search = lambda: time.sleep(1)
 
 
-def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, borrador: bool, test: bool):
+def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, firmar_y_enviar: bool, test: bool):
     
     driver.get(URL_SRI_Y_YO_FACTURA)
     wait = WebDriverWait(driver, 10)
@@ -146,20 +146,18 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, b
 
     # Guardar factura
 
-    if borrador:
-        click_element(ids.GUARDAR_SIN_FIRMAR_BUTTON_ID)
-        print("Factura guardada como borrador")
+    if test:
+        print("Factura creada pero no enviada ni guardada como borrador")
+        time.sleep(180)
     else:
-        click_element(ids.GUARDAR_Y_FIRMAR_BUTTON_ID)
-        wait_time_popup()
-        click_element(ids.CLAVE_CERTIFICADO_INPUT_ID)
-        write_in_element(ids.CLAVE_CERTIFICADO_INPUT_ID, value=firma)
-        if test:
-            click_element(ids.CANCELAR_ENVIO_FACTURA_FIRMADA_BUTTON_ID)
-            print("Factura creada pero no enviada ni guardada como borrador")
-            time.sleep(180)
-        else:
+        if firmar_y_enviar:
+            click_element(ids.GUARDAR_Y_FIRMAR_BUTTON_ID)
+            wait_time_popup()
+            click_element(ids.CLAVE_CERTIFICADO_INPUT_ID)
+            write_in_element(ids.CLAVE_CERTIFICADO_INPUT_ID, value=firma)
             click_element(ids.ENVIAR_FACTURA_FIRMADA_BUTTON_ID)
             print("Factura creada y enviada")
-    
-    time.sleep(2)
+        else:
+            click_element(ids.GUARDAR_SIN_FIRMAR_BUTTON_ID)
+            print("Factura guardada como borrador, luego se puede buscar en la sección \"pendientes\"")
+        time.sleep(3)
