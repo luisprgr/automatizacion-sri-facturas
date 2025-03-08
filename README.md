@@ -1,25 +1,18 @@
 # Automatización-sri-facturas
-Automatización de la creación de facturas en "SRI & Yo en Línea" de Ecuador usando python y selenium
 
+Automatización de la creación de facturas en "SRI & Yo en Línea" de Ecuador usando Python y Selenium
 
 ### Limitaciones actuales:
+
 - Los productos que se deseen facturar ya deben estar ingresados.
 - Actualmente solo se puede agregar una unidad por producto.
 - Funciones como propina, cambio del porcentaje de IVA y facturas negociables no están implementadas.
-- No tiene una interfaz de línea de comandos (_WIP_).
 
-### Comportamiento actual:
-Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla y luego manualmente firmarla y enviarla. 
+### Comportamiento por defecto del script:
 
-También por defecto el script corre en modo headless (sin mostrar el navegador), si se desea ver visualmente los pasos del script se debe crear una variable `ASRI_HEADLESS` con el valor False
-
-Si se desea que el script firme y envíe la factura automáticamente, se debe crear la variable de entorno `ASRI_BORRADOR` con el valor `False`.
-
-Otra comportamiento que puede tener la aplicación es mostrar todo el flujo de creación de la factura hasta el ingreso de la firma, pero cancelando el envío de la factura al final. Con el objetivo de que el usuario pueda supervisar todo el flujo de la aplicación. 
-
-Para esto se debe crear la variable de entorno `ASRI_TEST` con el valor `True` y `ASRI_BORRADOR` con el valor `False` para que la factura no se guarde como borrador.
-
-Bajo este modo, la aplicación no se cerrará al finalizar el proceso, en vez de eso se quedará abierta durante 3 minutos para que el usuario pueda revisar el resultado.
+- Por defecto el script guarda la factura como borrador, para que el usuario pueda revisarla y luego manualmente firmarla y enviarla. 
+- El script muestra la ventana del navegador, en la cual se puede ver como se va llenando la factura
+- Se guardan capturas de pantalla de los formularios llenados en la carpeta `capturas/` para su posterior revisión
 
 ### Requerimientos:
 
@@ -79,19 +72,52 @@ Bajo este modo, la aplicación no se cerrará al finalizar el proceso, en vez de
 
 4. Editar el archivo `datos.json` con los datos de la factura que se realizará
 
-### Ejecución:
+### Ejecución
 
-Para ejecutar el script se debe ejecutar el siguiente comando: 
+Para probar si se puede ejecutar el script se puede user el siguiente comando (esto mostrará un mensaje con la documentación de la cli del script): 
 
 Con uv:
 ```bash
-uv run main.py
+uv run main.py --help
 ```
 
-O ejecutando dentro del entorno virtual creado anteriormente:
+O dentro del entorno virtual creado anteriormente:
 ```bash
-python3 main.py
+python3 main.py --help
 ```
+
+Cualquier comando mencionado puede ejecutarse anteponiendo `uv run` o `python3`/`python` (si el entorno virtual está activado).
+Para simplificar, en los ejemplos utilizaré `python`, pero esta parte es intercambiable por `python3` o `uv run`.
+
+### Diferentes formas de ejecutar el script:
+
+- Para ejecutar el script con su comportamiento por defecto (llenar las facturas y guardarlas como borrador):
+
+    ```bash
+    python main.py
+    ```
+
+- Para verificar que el script complete correctamente la factura, se puede activar el modo de prueba con `--test`. En este modo, el programa inicia sesión y llena la factura con los datos del archivo `datos.json`, pero en lugar de enviarla o guardarla como borrador, congela la ejecución durante 3 minutos. Esto permite al usuario revisar manualmente la factura y asegurarse de que los datos se están ingresando correctamente. Es una opción ideal para validar la información del archivo `datos.json` y confirmar que las facturas contendrán los datos esperados. Transcurridos los 3 minutos, la ventana del navegador se cerrará automáticamente sin enviar la factura ni guardarla como borrador.
+
+    ```bash
+    python main.py --test
+    ```
+
+- Una vez comprobado que las facturas se generan según lo esperado, y para evitar tener que ingresar al facturador del SRI para enviar manualmente las facturas guardadas como borrador, se puede configurar el script para que firme y envíe automáticamente las facturas. Esto se logra con:
+
+    ```bash
+    python main.py --firmar-y-enviar
+    ```
+
+- Otras opciones que se pueden añadir a cualquiera de los comandos:
+    - `--datos <archivo.json>`: permite pasar el directorio a el archivo json con los datos de la factura que se deben enviar, puede ser util si se quieren enviar varias facturas por ejemplo, para `datos.factura1.json` y `datos.factura2.json` el comando sería de esta forma:
+        ```bash
+        python main.py --datos datos.factura1.json --firmar-y-enviar
+        python main.py --datos datos.factura2.json --firmar-y-enviar
+        ```
+    - `--no-capturas`: Evita que el script guarde capturas de los formularios llenados en la carpeta `capturas`
+    - `--headless`: Ejecuta el script sin mostrar la ventana del navegador, lo que resulta util si se quiere ejecutar el script mediante un cron job o algo similar y se quiere evitar interrumpir al usuario.
+
 
 ### Licencia
 
