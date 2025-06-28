@@ -76,6 +76,7 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, f
     
     if factura.get('adquiriente').get('direccion') != "":
         click_element(ids.DIRECCION_INPUT_ID)
+        wait_time_dropdown()
         write_in_element(ids.DIRECCION_INPUT_ID, value=factura.get('adquiriente').get('direccion'))
 
     if factura.get('adquiriente').get('telefono') != "":
