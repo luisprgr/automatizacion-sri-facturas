@@ -87,18 +87,21 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, f
     write_in_element(ids.CORREO_ELECTRONICO_INPUT_ID, value=factura.get('adquiriente').get('correo_electronico'))
 
     # Producto
-    
+    old_product_code = ""
     for producto in factura.get('productos'):
         click_element(ids.ADD_PRODUCTO_BUTTON_XPATH, By.XPATH)
         wait_time_popup()
     
         click_element(ids.CODIGO_PRODUCTO_INPUT_ID)
+        delete_text_in_element(ids.CODIGO_PRODUCTO_INPUT_ID, text_size=len(old_product_code))
         write_in_element(ids.CODIGO_PRODUCTO_INPUT_ID, value=producto.get('codigo_producto'))
         click_element(ids.BUSCAR_PRODUCTO_BUTTON_ID)
         wait_time_search()
     
         click_element(ids.PRODUCTO_ENCONTRADO_BUTTON_ID)
         wait_time_popup()
+        
+        old_product_code = producto.get('codigo_producto')
 
     # Forma de pago
 
@@ -161,4 +164,4 @@ def emision_factura(driver, guardar_capturas: bool, firma: str, factura: dict, f
         else:
             click_element(ids.GUARDAR_SIN_FIRMAR_BUTTON_ID)
             print("Factura guardada como borrador, luego se puede buscar en la sección \"pendientes\"")
-        time.sleep(3)
+        time.sleep(7)
